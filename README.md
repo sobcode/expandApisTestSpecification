@@ -4,20 +4,22 @@ Java/SpringBoot Candidate Test Specification (ExpandAPIs)
 In order to receive access to URLs with necessary authentication, add JWT to web headers: value = "Authorization", value = "Bearer " + token you received from authentication.
 
 
-Task:
+**Task:**
 Create a Java Spring Boot application that is able to do the following:
-1. Create an SpringBoot application with 4 API end-points:
-a. /user/add (POST)
+
+**1. Create an SpringBoot application with 4 API end-points:**
+
+**a. /user/add (POST)**
 i. This end-point will allow to add a user that can access the application. You
 can create/implement your own user table. The password should be stored
 with encryption. Saving/storing of new user data should be done using JPA.
 Below is the sample JSON payload for this end-point:
-
 {
 "username": "any username",
 "password" : "any password"
 }
-b. /user/authenticate (POST)
+
+**b. /user/authenticate (POST)**
 i. This end-point will allow the user to authenticate using their username and
 password. This authentication should use SpringBoot security+JPA. On successful
 login, the API should return the JWT access-token. Below is the sample JSON
@@ -28,7 +30,7 @@ payload for this end-point:
 "password" : "any password"
 }
 
-c. /products/add (POST)
+**c. /products/add (POST)**
 i. Using the JSON format below as the payload, dynamically save the records in the
 MySQL table using JPA. There should be no initial table and columns in the MySQL
 DB, this means that the table and fields/columns will be dynamically created as the
@@ -54,12 +56,12 @@ while the records to be saved will come from the "records" array.
 }] }
 i. This end-point can only be accessed by authenticated users.
 
-d. /products/all (GET)
+**d. /products/all (GET)**
 i. This end-point will return all the stored record in the table "products" that was
 created in item c in JSON format.
 ii. This end-point can only be accessed by authenticated users.
 
-Environment:
+**Environment:**
 1. The SpringBoot application will be tested with Postman
 2. To facilitate the testing with our own MySQL database, there should be an
 application.properties file that will allow to enter the database credentials that will be used
