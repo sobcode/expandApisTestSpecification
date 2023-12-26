@@ -6,6 +6,7 @@ import com.app.expandapistesttask.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -19,11 +20,14 @@ public class ProductServiceImpl implements ProductService {
 
 
     @Override
-    public void addAllProducts(Product[] products, String tableName) {
+    public List<Product> addAllProducts(Product[] products, String tableName) {
+        List<Product> productlist = new ArrayList<>();
         for(Product product : products){
             product.setTableName(tableName);
-            productRepository.save(product);
+            productlist.add(productRepository.save(product));
         }
+
+        return productlist;
     }
 
     @Override

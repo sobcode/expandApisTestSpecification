@@ -6,5 +6,5 @@ import com.app.expandapistesttask.model.dto.UserDTO;
 public interface UserService {
     User findUserByUsername(String username);
 
-    void addUser(UserDTO userDTO);
+    User addUser(UserDTO userDTO);
 }
