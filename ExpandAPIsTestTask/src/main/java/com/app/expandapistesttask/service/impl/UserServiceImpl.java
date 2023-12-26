@@ -1,5 +1,6 @@
 package com.app.expandapistesttask.service.impl;
 
+import com.app.expandapistesttask.exception.AuthenticationException;
 import com.app.expandapistesttask.model.User;
 import com.app.expandapistesttask.model.dto.UserDTO;
 import com.app.expandapistesttask.repository.UserRepository;
@@ -26,13 +27,13 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public void addUser(UserDTO userDTO) {
-//        if(userRepository.findUserByUsername(userDTO.getUsername()) != null) {
-//            throw new AuthenticationException("User with email " + userDTO.getUsername() + " is already exists!");
-//        }
+        if(userRepository.findUserByUsername(userDTO.getUsername()) != null) {
+            throw new AuthenticationException("User with username " + userDTO.getUsername() + " is already exists!");
+        }
 
         User user = new User(userDTO.getUsername(),
                 passwordEncoder.encode(userDTO.getPassword()));
-        System.out.println("in user service");
+
         userRepository.save(user);
     }
 }
